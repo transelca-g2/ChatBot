@@ -1,0 +1,10 @@
+#Requerimientos
+# pip install -r requirements.txt
+
+#Flask
+Flask
+
+#Gunicorn
+Gunicorn
+
+Flask-cors
