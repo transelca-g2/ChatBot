@@ -14,13 +14,13 @@ cursor.execute(sql_select_Query)
 rv = cursor.fetchall()
 
 # Creación de file desde database
-if os.path.isfile("./static/conceptosfile.yml"):
-    os.remove("./static/conceptosfile.yml")
+# if os.path.isfile("./static/conceptosfile.yml"):
+#     os.remove("./static/conceptosfile.yml")
 
-f = open("./static/conceptosfile.yml", "a")
-data = dict([('categories', ['- Conceptos', '- Teoría']), ('conversations', dict(rv))])
-f.write(yaml.dump(data, default_flow_style=False)) 
-f.close()
+# f = open("./static/conceptosfile.yml", "a")
+# data = dict([('categories', ['- Conceptos', '- Teoría']), ('conversations', dict(rv))])
+# f.write(yaml.dump(data, default_flow_style=False)) 
+# f.close()
 
 # Create a new chat bot named Charlie
 # Create a new instance of a ChatBot
