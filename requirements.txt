@@ -5,7 +5,7 @@
 Flask
 
 #Gunicorn
-Gunicorn
+gunicorn== 19.9.0
 
 #Chatterbot
 Chatterbot
