@@ -9,3 +9,5 @@ Gunicorn
 
 #Chatterbot
 Chatterbot
+
+Chatterbot-corpus
