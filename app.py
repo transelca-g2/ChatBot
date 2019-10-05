@@ -9,7 +9,7 @@ app = Flask(__name__)
 # Create a new instance of a ChatBot
 
 chatbot = ChatBot(
-    'dyna',
+    'IsaBot',
     storage_adapter='chatterbot.storage.SQLStorageAdapter',
     logic_adapters=[
         {
@@ -27,7 +27,7 @@ chatbot.storage.drop()
 
 trainer = ChatterBotCorpusTrainer(chatbot)
 trainer.train(
-    "chatterbot.corpus.spanish.greetings",
+    #"chatterbot.corpus.spanish.greetings",
     "chatterbot.corpus.spanish.conversations",
     './static/conceptos.yml'
 )
