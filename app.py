@@ -23,8 +23,6 @@ chatbot = ChatBot(
         'chatterbot.preprocessors.clean_whitespace'
     ]
 )
-chatbot.storage.drop()
-
 trainer = ChatterBotCorpusTrainer(chatbot)
 trainer.train(
     #"chatterbot.corpus.spanish.greetings",
