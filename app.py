@@ -6,12 +6,12 @@ import mysql.connector
 
 app = Flask(__name__)
 
-connection = mysql.connector.connect(host='108.167.149.240', database='appcesco_chatbot', user='appcesco_chatbot', password='chatbot')
+# connection = mysql.connector.connect(host='108.167.149.240', database='appcesco_chatbot', user='appcesco_chatbot', password='chatbot')
 
-sql_select_Query = "SELECT p.pregunta, r.respuesta FROM preguntas p INNER JOIN respuestas r ON r.id_pregunta = p.id"
-cursor = connection.cursor()
-cursor.execute(sql_select_Query)
-rv = cursor.fetchall()
+# sql_select_Query = "SELECT p.pregunta, r.respuesta FROM preguntas p INNER JOIN respuestas r ON r.id_pregunta = p.id"
+# cursor = connection.cursor()
+# cursor.execute(sql_select_Query)
+# rv = cursor.fetchall()
 
 # Creación de file desde database
 # if os.path.isfile("./static/conceptosfile.yml"):
@@ -28,7 +28,7 @@ rv = cursor.fetchall()
 chatbot = ChatBot(
     'IsaBot',
     storage_adapter="chatterbot.storage.SQLStorageAdapter",
-    database_uri="mysql://appcesco_chatbot:chatbot@108.167.149.240/appcesco_chatbot",
+    # database_uri="mysql://appcesco_chatbot:chatbot@108.167.149.240/appcesco_chatbot",
     logic_adapters=[
         {
             'import_path': 'chatterbot.logic.BestMatch',    
