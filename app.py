@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
-import os, json, yaml, sys
-import mysql.connector
+# import os, json, yaml, sys
+# import mysql.connector
 
 app = Flask(__name__)
 
@@ -47,7 +47,7 @@ trainer = ChatterBotCorpusTrainer(chatbot)
 trainer.train(
     #"chatterbot.corpus.spanish.greetings",
     "chatterbot.corpus.spanish.conversations",
-    './static/conceptosfile.yml'
+    './static/conceptos.yml'
 )
 
 @app.route("/")
