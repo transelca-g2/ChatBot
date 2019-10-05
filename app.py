@@ -1,17 +1,22 @@
-"""Flask App Project."""
+from flask import Flask, render_template, request
+from chatterbot import ChatBot
+from chatterbot.trainers import ChatterBotCorpusTrainer
 
-from flask import Flask, jsonify
-from flask_cors import cross_origin
 app = Flask(__name__)
-
-
-@app.route('/')
-@cross_origin()
-def index():
-    """Return homepage."""
-    json_data = {'Hello': 'World!'}
-    return jsonify(json_data)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+ 
+english_bot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter")
+trainer = ChatterBotCorpusTrainer(english_bot)
+trainer.train("chatterbot.corpus.english")
+ 
+@app.route("/")
+def home():
+    return render_template("index.html")
+ 
+@app.route("/get")
+def get_bot_response():
+    userText = request.args.get('msg')
+    return str(english_bot.get_response(userText))
+ 
+ 
+if __name__ == "__main__":
+    app.run()

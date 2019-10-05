@@ -7,4 +7,5 @@ Flask
 #Gunicorn
 Gunicorn
 
-Flask-cors
+#Chatterbot
+Chatterbot
