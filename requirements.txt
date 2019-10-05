@@ -13,8 +13,3 @@ Chatterbot
 chatterbot-corpus
 
 nltk
-mysql
-beautifulsoup4
-Flask-MySQLdb
-lxml
-mysql-connector-python
