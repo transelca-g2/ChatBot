@@ -1,22 +1,37 @@
 from flask import Flask, render_template, request
 from chatterbot import ChatBot
-from chatterbot.trainers import ListTrainer
-
+from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
+import os
 
 app = Flask(__name__)
  
 # Create a new chat bot named Charlie
-chatbot = ChatBot('Charlie')
+# Create a new instance of a ChatBot
 
-trainer = ListTrainer(chatbot)
+chatbot = ChatBot(
+    'dyna',
+    storage_adapter='chatterbot.storage.SQLStorageAdapter',
+    logic_adapters=[
+        {
+            'import_path': 'chatterbot.logic.BestMatch',
+            'default_response': 'Lo siento, pero no entiendo',
+            'maximum_similarity_threshold': 0.90
+        }
+    ],
+    read_only=True,
+    preprocessors=[
+        'chatterbot.preprocessors.clean_whitespace'
+    ]
+)
+chatbot.storage.drop()
 
-trainer.train([
-    "Hi, can I help you?",
-    "Sure, I'd like to book a flight to Iceland.",
-    "Your flight has been booked."
-])
+trainer = ChatterBotCorpusTrainer(chatbot)
+trainer.train(
+    "chatterbot.corpus.spanish.greetings",
+    "chatterbot.corpus.spanish.conversations",
+    './static/conceptos.yml'
+)
 
- 
 @app.route("/")
 def home():
     return render_template("index.html")
